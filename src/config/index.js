@@ -2,5 +2,7 @@
  * Created by yuexing on 2016/8/13.
  */
 module.exports = {
-	db:"mongodb://127.0.0.1/noobjs_dev"
+	mongodb:{
+		uri:"mongodb://127.0.0.1/noobjs_dev",
+	}
 };

@@ -1,5 +1,8 @@
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
+
+const config = require('./config');
+const mongodb = require('./dao/mongodbConnect');
 require('./web/express')(app);//加载和express相关的配置
 require('./web/router')(app);//加载路由配置
 /**
@@ -26,9 +29,13 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
+
+mongodb.connect(config.mongodb,function(msg){
+	console.log(msg);
+	server.listen(port);
+	server.on('error', onError);
+	server.on('listening', onListening);
+});
 
 /**
  * Normalize a port into a number, string, or false.
