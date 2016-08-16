@@ -23,4 +23,5 @@ const UserSchema = new Schema({
 	password: { type: String, default: '' },//加密后的密码
 	salt: { type: String, default: '' }
 });
-mongoose.model('User', UserSchema);
+
+module.exports = mongoose.model('User', UserSchema);
