@@ -33,6 +33,7 @@ var server = http.createServer(app);
 mongodb.connect(config.mongodb,function(msg){
 	console.log(msg);
 	server.listen(port);
+	console.log('Express app started on port ' + port);
 	server.on('error', onError);
 	server.on('listening', onListening);
 });
