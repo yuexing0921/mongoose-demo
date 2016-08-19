@@ -2,11 +2,9 @@
  * Created by yuexing on 2016/8/13.
  */
 
-var routes = require('./router/index');
-var users = require('./router/users');
+var users = require('./users');
 module.exports = function (app) {
-	app.use('/', routes);
-	app.use('/users', users);
+	app.use('/', users);
 
 	// catch 404 and forward to error handler
 	app.use(function(req, res, next) {

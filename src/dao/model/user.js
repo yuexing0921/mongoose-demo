@@ -1,5 +1,12 @@
 /**
- * Created by yuexing on 2016/8/15.
+ * 包含以下功能
+ * 1.定义Schema的基本数据类型
+ * 2.定义个别属性的不能为空
+ * 3.使用虚拟属性
+ * 4.使用验证方法
+ * 5.添加hock函数
+ * 6.定义Schema的静态方法
+ * 7.定义Model方法
  */
 'use strict';
 
@@ -13,9 +20,9 @@ const crypto = require('crypto');
 const Schema = mongoose.Schema;
 
 /**
+ *
  * User Schema
  */
-
 const UserSchema = new Schema({
 	name: { type: String, default: '' },//姓名
 	email: { type: String, default: '' },//邮箱
@@ -24,6 +31,7 @@ const UserSchema = new Schema({
 	hashed_password: { type: String, default: '' },//加密后的密码
 	salt: { type: String, default: '' }
 });
+const validatePresenceOf = value => value && value.length;
 /**
  * 指定不能为空的字段，并且添加msg
  * */
@@ -57,6 +65,40 @@ UserSchema.path('email').validate(function (email,fn) {
 		});
 	} else fn(true);
 }, 'Email已经被占用！');
+
+/**
+ * Pre-save hook
+ */
+UserSchema.pre('save', function (next) {
+	if (!this.isNew) return next();
+	if (!validatePresenceOf(this.password)) {
+		next(new Error('Invalid password'));
+	} else {
+		next();
+	}
+});
+
+/**
+ * UserSchema的静态方法
+ * */
+UserSchema.statics = {
+
+	/**
+	 * Load
+	 *
+	 * @param {Object} options
+	 * @param {Function} cb
+	 * @api private
+	 */
+
+	load: function (options, cb) {
+		options.select = options.select || 'name username';
+		return this.findOne(options.criteria)
+			.select(options.select)
+			.exec(cb);
+	}
+};
+
 /**
  * UserSchema的各类方法
  */
@@ -98,4 +140,6 @@ UserSchema.methods = {
 		}
 	}
 };
+
+
 module.exports = mongoose.model('User', UserSchema);

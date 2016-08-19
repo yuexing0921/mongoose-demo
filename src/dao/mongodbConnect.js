@@ -1,8 +1,6 @@
 /**
  * 数据库连接
- * Created by yuexing on 2016/8/15.
  */
-'use strict';
 const mongoose = require('mongoose');
 const util     = require("util");
 
