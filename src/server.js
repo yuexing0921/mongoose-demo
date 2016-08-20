@@ -6,7 +6,7 @@ const config = require('./config');
 const mongodb = require('./dao/mongodbConnect');
 require('./web/passport')(passport);
 require('./web/express')(app,passport);//加载和express相关的配置
-require('./web/router')(app,passport);//加载路由配置
+require('./web/routers')(app,passport);//加载路由配置
 /**
  * Module dependencies.
  */
@@ -98,8 +98,6 @@ function onListening() {
 		: 'port ' + addr.port;
 	debug('Listening on ' + bind);
 }
-
-
 
 
 module.exports = app;
