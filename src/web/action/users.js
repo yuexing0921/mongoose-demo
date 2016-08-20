@@ -16,10 +16,14 @@ exports.create = (req, res,next) => {
 	user.provider = 'local';
 	try {
 		userDao.createUser(user,err =>{
-			if (err) return res.render('users/signup', {
-				title: '注册',
-				errors:err
-			});
+			if (err){
+				const errors = Object.keys(err.errors)
+					.map(field => err.errors[field].message);
+				return res.render('users/signup', {
+					title: '注册',
+					errors:errors
+				});
+			}
 			return res.render('users/signup', {
 				title: 'Sign up',
 				info:"注册成功"

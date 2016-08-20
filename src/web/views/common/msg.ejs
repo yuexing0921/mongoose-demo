@@ -1,8 +1,8 @@
 <div class="msg">
 	<% if(typeof errors != 'undefined' && errors.length){ %>
 	<ul class="error">
-		<%for(var err in errors){%>
-		<li><%=err%></li>
+		<%for(var index in errors){%>
+		<li><%=errors[index]%></li>
 		<%}%>
 	</ul>
 	<%}%>
