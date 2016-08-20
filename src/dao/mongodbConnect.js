@@ -25,6 +25,7 @@ class MongodbConnect{
 			pass  : conf.password
 		};
 		var uri = conf.uri;
+		mongoose.Promise = global.Promise;
 		var connect = function(){
 			return mongoose.connect(uri,options).connection;
 		};

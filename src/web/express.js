@@ -39,7 +39,7 @@ module.exports = function(app,passport){
 	app.use(cookieParser({ secret: 'secret' }));
 
 	app.use(cookieSession({ secret: 'secret' }));//简单的基于Session的cookie中间件
-	app.use(session({
+	app.use(session({//设置通过mongod管理session，当然也可以设置其他的方式，比如redis
 		resave: false,
 		saveUninitialized: true,
 		secret: pkg.name,
@@ -53,4 +53,8 @@ module.exports = function(app,passport){
 	app.use(passport.session());
 
 	app.use(csrf());//安全中间件
+	app.use(function (req, res, next) {
+		res.locals.csrf_token = req.csrfToken();
+		next();
+	});
 };

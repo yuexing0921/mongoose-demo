@@ -2,6 +2,8 @@
 const express = require('express');
 const router = express.Router();
 const users = require('../action/users');
-/* GET home page. */
-router.get('/', users.sendData);
+
+/* users */
+router.get('/', users.signup);
+router.post('/signup', users.create);
 module.exports = router;

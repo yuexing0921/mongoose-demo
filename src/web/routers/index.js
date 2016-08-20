@@ -4,13 +4,15 @@
 
 var users = require('./users');
 module.exports = function (app) {
-	app.use('/', users);
+	app.use('/user', users);
 
 	// catch 404 and forward to error handler
 	app.use(function(req, res, next) {
 		var err = new Error('Not Found');
 		err.status = 404;
-		next(err);
+		if(app.get('env') === 'development'){
+			next(err);
+		}
 	});
 
 // error handlers

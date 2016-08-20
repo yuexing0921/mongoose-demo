@@ -1,0 +1,14 @@
+<div class="msg">
+	<% if(typeof errors != 'undefined' && errors.length){ %>
+	<ul class="error">
+		<%for(var err in errors){%>
+		<li><%=err%></li>
+		<%}%>
+	</ul>
+	<%}%>
+	<% if(typeof info != 'undefined' && info.length){ %>
+	<ul class="info">
+		<li><%=info%></li>
+	</ul>
+	<%}%>
+</div>

@@ -1,0 +1,32 @@
+<%- partial('./header/header', {title: title}) %>
+<style>
+	.wrap{text-align: center;margin-top: 50px;}
+	*{font:12px Microsoft YaHei;}
+	h1{font:16px Microsoft YaHei;}
+	li{line-height: 50px;}
+</style>
+<body>
+<div class="wrap">
+	<%- partial('./common/msg') %>
+	<form action="/user/signup" method="post" >
+		<h1>用户注册</h1>
+		<ul>
+			<li>
+				<input type="text" autocomplete="off" name="username" placeholder="请输入姓名" />
+			</li>
+			<li>
+				<input type="text" autocomplete="off" name="email" placeholder="请输入邮箱地址" />
+			</li>
+			<li>
+				<input type="password" autocomplete="off" name="password" placeholder="请输入密码" />
+			</li>
+			<li>
+				<input type='hidden' name='_csrf' value='<%= csrf_token %>'/>
+				<input class='btn' type="submit" value="注册"/>
+				<button>登陆</button>
+			</li>
+		</ul>
+	</form>
+</div>
+</body>
+</html>

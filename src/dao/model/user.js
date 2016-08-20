@@ -24,9 +24,8 @@ const Schema = mongoose.Schema;
  * User Schema
  */
 const UserSchema = new Schema({
-	name: { type: String, default: '' },//姓名
-	email: { type: String, default: '' },//邮箱
 	username: { type: String, default: '' },//用户名
+	email: { type: String, default: '' },//邮箱
 	provider: { type: String, default: '' },//来源
 	hashed_password: { type: String, default: '' },//加密后的密码
 	salt: { type: String, default: '' }
@@ -35,7 +34,7 @@ const validatePresenceOf = value => value && value.length;
 /**
  * 指定不能为空的字段，并且添加msg
  * */
-UserSchema.path('name').required(true, '姓名不能为空');
+UserSchema.path('username').required(true, '用户名不能为空');
 UserSchema.path('email').required(true, '邮箱地址不能为空');
 
 /**
