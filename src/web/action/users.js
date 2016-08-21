@@ -40,3 +40,16 @@ exports.create = (req, res,next) => {
 		});
 	}
 };
+
+exports.login = (req, res) => {
+	res.render('users/login', {
+		title: '登录'
+	});
+};
+exports.session = (req, res,next) => {
+	const redirectTo = req.session.returnTo
+		? req.session.returnTo
+		: '/';
+	delete req.session.returnTo;
+	res.redirect(redirectTo);
+};
