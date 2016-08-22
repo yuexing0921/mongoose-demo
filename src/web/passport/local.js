@@ -14,7 +14,7 @@ module.exports = new LocalStrategy({
 	},(email, password, done) =>{
 		const options = {
 			criteria: { email: email },
-			select: 'name username email hashed_password salt'
+			select: 'username email hashed_password salt'
 		};
 		//查找数据库，查看是否有相应的信息
 		User.load(options, (err, user) => {
