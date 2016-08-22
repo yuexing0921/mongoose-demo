@@ -9,6 +9,7 @@ const User = require('../../dao/model').User;
  * Expose
  */
 module.exports = new LocalStrategy({
+		passwordField: 'password',
 		usernameField: 'email'//这是设置用户名和密码的别名，默认情况下是username和password
 	},(email, password, done) =>{
 		const options = {

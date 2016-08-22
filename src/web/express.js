@@ -16,6 +16,7 @@ const csrf = require('csurf');
 const cookieSession = require('cookie-session');
 const session = require('express-session');
 const mongoStore = require('connect-mongo')(session);
+const flash = require('connect-flash');
 
 const config = require('../config');
 const pkg = require('../../package.json');
@@ -48,6 +49,7 @@ module.exports = function(app,passport){
 			collection : 'sessions'
 		})
 	}));
+	app.use(flash());
 	// use passport session
 	app.use(passport.initialize());
 	app.use(passport.session());
