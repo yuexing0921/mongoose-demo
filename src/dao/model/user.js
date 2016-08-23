@@ -8,7 +8,6 @@
  * 6.定义Schema的静态方法
  * 7.定义Model方法
  */
-'use strict';
 
 /**
  * Module dependencies.
@@ -28,8 +27,10 @@ const UserSchema = new Schema({
 	email: { type: String, default: '' },//邮箱
 	provider: { type: String, default: '' },//来源
 	hashed_password: { type: String, default: '' },//加密后的密码
-	salt: { type: String, default: '' }
-});
+	salt: { type: String, default: '' },
+	createdAt  : { type : Date, default : Date.now },
+	updatedAt  : { type : Date, default : Date.now }
+},{timestamps: { createdAt: 'createdAt', updatedAt: 'updatedAt' }});
 const validatePresenceOf = value => value && value.length;
 /**
  * 指定不能为空的字段，并且添加msg

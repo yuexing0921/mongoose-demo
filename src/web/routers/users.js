@@ -12,6 +12,6 @@ router.post('/session',
 	pauth('local', {
 		failureRedirect: '/user/login',
 		failureFlash: 'Invalid email or password.'
-	}), users.session);
+	}), users.session);//这里会调用local的验证方法
 
 module.exports = router;

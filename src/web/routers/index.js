@@ -2,8 +2,20 @@
  * Created by yuexing on 2016/8/13.
  */
 
-var users = require('./users');
-module.exports = function (app) {
+const users = require('./users');
+//const users = require('../action/users');
+module.exports = function (app,passport) {
+	const pauth = passport.authenticate.bind(passport);
+	/* users */
+	//app.get('/user', users.signup);
+	//app.post('/user/signup', users.create);
+	//app.get('/user/login', users.login);
+	//app.post('/user/session',
+	//	pauth('local', {
+	//		failureRedirect: '/user/login',
+	//		failureFlash: 'Invalid email or password.'
+	//	}), users.session);
+
 	app.use('/user', users);
 
 	// catch 404 and forward to error handler
