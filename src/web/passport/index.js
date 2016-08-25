@@ -13,9 +13,13 @@ module.exports = function (passport) {
 
 	// serialize sessions
 	//序列化一个User对象或者保存一个User对象
-	passport.serializeUser((user, cb) => cb(null, user.id));
-	//从序列化删除一个User对象
-	passport.deserializeUser((id, cb) => User.load({ criteria: { _id: id } }, cb));
+	passport.serializeUser((user, cb) => {
+		cb(null, user.id)
+	});
+	//注册一个函数用于用户的会话中的对象进行反序列化
+	passport.deserializeUser((id, cb) =>{
+		User.load({ criteria: { _id: id } }, cb)
+	});
 
 	// use these strategies
 	passport.use(local);

@@ -4,6 +4,8 @@ const router = express.Router();
 const users = require('../action/users');
 const passport = require('passport');
 const pauth = passport.authenticate.bind(passport);
+
+router.param('userId', users.load);
 /* users */
 router.get('/', users.signup);
 router.post('/signup', users.create);
