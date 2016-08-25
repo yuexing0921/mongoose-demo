@@ -4,5 +4,6 @@
 module.exports = {
 	mongodb:{
 		uri:"mongodb://127.0.0.1/noobjs_dev",
-	}
+	},
+	serverPort:8081
 };

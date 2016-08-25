@@ -26,7 +26,7 @@ then
 $ npm start
 ```
 
-Then visit [http://localhost:3000/](http://localhost:3000/)
+Then visit [http://localhost:8081/](http://localhost:8081/)
 
 #### 初衷
 * 为了学习mongoose是如何操作mongoDb的
