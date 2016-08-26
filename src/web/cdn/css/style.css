@@ -56,6 +56,24 @@ blockquote:before, blockquote:after, q:before, q:after { content: ''; content: n
 * { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 
 body, a { color: #666; }
+.nav{
+	display: inline-block;
+	text-align: center;
+	width: 100%;
+}
+.nav ul{
+	display: inline-block;
+	width: 900px;
+}
+.nav li{
+	float: left;line-height: 70px;
+}
+.nav li .title{
+	font-size: 16px;
+}
+.nav .github{
+	width:110px;height:45px;margin: 24px;
+}
 input{
 	width: 220px;height: 30px;
 }

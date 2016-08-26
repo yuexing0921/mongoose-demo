@@ -10,7 +10,7 @@ exports.load =  (req, res, next, _id) =>{
 	userDao.load(_id).then((profile)=>{
 		req.profile = profile;
 		if (!req.profile) return next(new Error('User not found'));
-	}).catch(()=>{
+	}).catch((err)=>{
 		return next(err);
 	});
 	next();
@@ -29,38 +29,12 @@ exports.create = (req, res,next) => {
 			info:"注册成功"
 		});
 	}).catch(err =>{
-		const errors = Object.keys(err.errors)
-			.map(field => err.errors[field].message);
+		const errors = Object.keys(err.errors).map(field => err.errors[field].message);
 		return res.render('users/signup', {
 			title: '注册',
 			errors:errors
 		});
 	});
-	//try {
-	//	userDao.createUser(user,err =>{
-	//		if (err){
-	//			const errors = Object.keys(err.errors)
-	//				.map(field => err.errors[field].message);
-	//			return res.render('users/signup', {
-	//				title: '注册',
-	//				errors:errors
-	//			});
-	//		}
-	//		return res.render('users/signup', {
-	//			title: 'Sign up',
-	//			info:"注册成功"
-	//		});
-	//	});
-	//} catch (err) {
-	//	const errors = Object.keys(err.errors)
-	//		.map(field => err.errors[field].message);
-	//
-	//	res.render('users/signup', {
-	//		title: 'Sign up',
-	//		errors,
-	//		user
-	//	});
-	//}
 };
 
 exports.login = (req, res) => {

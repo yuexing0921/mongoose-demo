@@ -5,7 +5,7 @@
 const users = require('./users');
 //const users = require('../action/users');
 module.exports = function (app,passport) {
-	const pauth = passport.authenticate.bind(passport);
+	//const pauth = passport.authenticate.bind(passport);
 	/* users */
 	//app.get('/user', users.signup);
 	//app.post('/user/signup', users.create);
