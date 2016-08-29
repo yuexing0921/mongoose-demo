@@ -3,6 +3,7 @@
  */
 
 const users = require('./users');
+const article = require('./article');
 //const users = require('../action/users');
 module.exports = function (app,passport) {
 	//const pauth = passport.authenticate.bind(passport);
@@ -17,6 +18,7 @@ module.exports = function (app,passport) {
 	//	}), users.session);
 
 	app.use('/user', users);
+	app.use('/', article);
 
 	// catch 404 and forward to error handler
 	app.use(function(req, res, next) {

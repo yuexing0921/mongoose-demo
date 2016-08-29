@@ -60,7 +60,7 @@ Then visit [http://localhost:8081/](http://localhost:8081/)
     
 3. 开发思想，原来的nexm项目model层和view结合的太紧密了，个人不太喜欢这种方式，所以做了分离，加了一个dao层，方便项目的扩展。
 ![流程图](https://github.com/yuexing0921/mongoose-demo/blob/master/img/flow-chart.png)
->一般企业级大项目中，为了分离代码的耦合度，让项目能更好的维护，action到dao之间，还有有service层和logic层，这里就不展开了。
+>一般企业级大项目中，为了分离代码的耦合度，让项目能更好的维护，action到dao之间，还有service层和logic层，这里就不展开了。
 
 ```
 sequenceDiagram
