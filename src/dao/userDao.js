@@ -9,7 +9,7 @@ exports.load = async(function* (_id){
 	const options = {
 		criteria: { _id: _id }
 	};
-	yield User.load(options);
+	yield UserModel.load(options);
 });
 exports.createUser = async(function* (user){
 	if(Util.isEmptyObject(user)){
@@ -27,5 +27,5 @@ exports.passportStrategy = async(function* (email,callback){
 		criteria: { email: email },
 		select: 'username email hashed_password salt'
 	};
-	yield User.load(options,callback);
+	yield UserModel.load(options,callback);
 });

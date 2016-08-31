@@ -7,10 +7,10 @@
 <div class="content">
 	<%for(var i = 0;i < articles.length;i++ ){%>
 	<article class="article">
-		<h3><a href="/articles/57c3c7d270bd2a5879e0024a" title="阿飞爱上">阿飞爱上</a></h3>
-		<p>阿斯蒂芬啊</p>
-		<div class="meta"><span class="muted">Aug 29, 2016</span>&nbsp; - &nbsp;<span>Author &nbsp;</span><a
-					href="/users/57ad67237d5f37f0374079cc">yiquanwen</a>
+		<h3><a href="/articles/<%=article._id%>" title="<%=article.title%>"><%=article.title%></a></h3>
+		<p><%=article.body%></p>
+		<div class="meta"><span class="muted"><%=article.createdAt%></span>&nbsp; - &nbsp;<span>Author &nbsp;</span><a
+					href="/users/<%=article.user._id%>"><%=article.user.username%></a>
 		</div>
 	</article>
 	<%}%>

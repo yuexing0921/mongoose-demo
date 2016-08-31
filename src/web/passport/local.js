@@ -13,8 +13,7 @@ module.exports = new LocalStrategy({
 		usernameField: 'email'//这是设置用户名和密码的别名，默认情况下是username和password
 	},(email, password, done) =>{
 		//查找数据库，查看是否有相应的信息
-		UserDao.passportStrategy(email, (err, user) => {
-			if (err) return done(err);
+		UserDao.passportStrategy(email).then(user => {
 			if (!user) {
 				return done(null, false, { message: '没有此用户' });
 			}
@@ -22,6 +21,8 @@ module.exports = new LocalStrategy({
 				return done(null, false, { message: '密码错误' });
 			}
 			return done(null, user);
+		}).catch(err => {
+			if (err) return done(err);
 		});
 	}
 );

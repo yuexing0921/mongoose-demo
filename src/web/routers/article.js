@@ -8,8 +8,8 @@ const auth = require('../middlewares/authorization');
 const articleAuth = [auth.requiresLogin, auth.article.hasAuthorization];
 
 
-app.param('id', articles.load);
-app.get('/', articles.index);
-app.get('/articles', articles.index);
-app.get('/articles/new', auth.requiresLogin, articles.new);
+router.param('id', articles.load);
+router.get('/', articles.index);
+router.get('/articles', articles.index);
+router.get('/articles/new', auth.requiresLogin, articles.new);
 module.exports = router;

@@ -16,7 +16,9 @@ const csrf = require('csurf');
 const cookieSession = require('cookie-session');
 const session = require('express-session');
 const mongoStore = require('connect-mongo')(session);
+//connect-flash和view-helpers结合，可以方便的展示info、errors、success、warning信息
 const flash = require('connect-flash');
+const helpers = require('view-helpers');
 
 const config = require('../config');
 const pkg = require('../../package.json');
@@ -50,6 +52,7 @@ module.exports = function(app,passport){
 		})
 	}));
 	app.use(flash());
+	app.use(helpers(pkg.name));
 	// use passport session
 	app.use(passport.initialize());
 	app.use(passport.session());
