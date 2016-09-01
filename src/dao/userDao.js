@@ -9,23 +9,23 @@ exports.load = async(function* (_id){
 	const options = {
 		criteria: { _id: _id }
 	};
-	yield UserModel.load(options);
+	return yield UserModel.load(options);
 });
 exports.createUser = async(function* (user){
 	if(Util.isEmptyObject(user)){
-		yield new TypeError('用户参数不合法');
+		return yield new TypeError('用户参数不合法');
 	}
 	let userModel  = new UserModel(user);
 	//let keys = Object.keys(userModel._doc);
 	//keys = keys.slice(0,keys.length-1);
 	//userModel = Util.pick(user,userModel, keys);
-	yield  userModel.save();
+	return yield  userModel.save();
 });
 
-exports.passportStrategy = async(function* (email,callback){
+exports.passportStrategy = async(function* (email){
 	const options = {
 		criteria: { email: email },
 		select: 'username email hashed_password salt'
 	};
-	yield UserModel.load(options,callback);
+	return yield UserModel.load(options);
 });
