@@ -28,4 +28,11 @@ exports.passportStrategy = async(function* (email){
 		select: 'username email hashed_password salt'
 	};
 	return yield UserModel.load(options);
+	//也可以用下面这种方式。看业务需求
+	//result = yield UserModel.load(options);
+	//if(result){
+	//	return Promise.resolve(result)
+	//}else{
+	//	return Promise.reject(false);
+	//}
 });
