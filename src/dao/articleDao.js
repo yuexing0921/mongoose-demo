@@ -15,16 +15,15 @@ exports.load = async(function* (req, res, next, id) {
 	next();
 });
 
-exports.getList = async(function* (page) {
+exports.getList = async(function* (page,limit) {
 
-	const limit = 30;
 	const options = {
 		limit: limit,
 		page: page
 	};
 	//const articles = yield ArticleModel.list(options);
 	//const count = yield ArticleModel.count();
-	yield {
+	return yield {
 		articles: Promise.resolve(ArticleModel.list(options)),
 		count: Promise.resolve(ArticleModel.count())
 	};
@@ -35,5 +34,5 @@ exports.createArticle = async(function* (article){
 		return  new TypeError('参数不合法');
 	}
 	let articleModel  = new ArticleModel(article);
-	yield  articleModel.save();
+	return yield  articleModel.save();
 });

@@ -18,13 +18,13 @@ exports.load =  (req, res, next, _id) =>{
 
 exports.index = (req, res ) => {
 	const page = (req.query.page > 0 ? req.query.page : 1) - 1;
-
-	articleDao.getList(page).then((data)=>{
+	const limit = 30;
+	articleDao.getList(page,limit).then((data)=>{
 		return res.render('articles/index', {
 			title: 'Articles',
 			articles: data.articles,
 			page: page + 1,
-			pages: Math.ceil(count / limit)
+			pages: Math.ceil(data.count / limit)
 		});
 	}).catch(err =>{
 		const errors = Object.keys(err.errors).map(field => err.errors[field].message);

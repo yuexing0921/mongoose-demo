@@ -171,4 +171,4 @@ ArticleSchema.statics = {
 	}
 };
 
-mongoose.model('Article', ArticleSchema);
+module.exports = mongoose.model('Article', ArticleSchema);
