@@ -37,7 +37,6 @@ exports.index = (req, res ) => {
 
 exports.new = function (req, res){
 	res.render('articles/new', {
-		title: 'New Article',
-		article: new Article()
+		title: 'New Article'
 	});
 };

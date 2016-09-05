@@ -1,0 +1,46 @@
+<%- partial('./header/header', {title: title}) %>
+
+<body>
+<%- partial('./header/nav') %>
+<div class="wrap">
+	<%- partial('./common/msg') %>
+	<form method="post" action="/articles" enctype="multipart/form-data" role="form" class="form-horizontal">
+		<input type='hidden' name='_csrf' value='<%= csrf_token %>'/>
+		<div class="form-group">
+			<label for="title" class="control-label">Title</label>
+			<div class="">
+				<input id="title" type="text" name="title" value="" placeholder="Enter the title" class="form-control">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="file" class=" control-label">Image</label>
+			<div class="">
+				<input id="file" type="file" name="image" class="form-control">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="desc" class="control-label">Body</label>
+			<div class="">
+			<textarea id="desc" rows="5" name="body" placeholder="Enter the article description"
+					  class="form-control"></textarea>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="tags" class=" control-label">Tags</label>
+			<div>
+				<input id="tags" type="text" name="tags" value="" placeholder="Enter the tags" class="form-control"
+					   style="display: none;">
+				<div id="tags_tagsinput" class="tagsinput" style="width: 280px; height: 60px;">
+					<div id="tags_addTag"><input id="tags_tag" value="" data-default="add a tag"></div>
+					<div class="tags_clear"></div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<button type="submit" class="btn btn-primary">Save</button>
+			&nbsp;<a href="/articles" title="cancel" class="btn">Cancel</a>
+		</div>
+	</form>
+</div>
+</body>
+</html>
