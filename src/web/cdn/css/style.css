@@ -57,6 +57,7 @@ blockquote:before, blockquote:after, q:before, q:after { content: ''; content: n
 
 body, a { color: #666; }
 *{font:12px Microsoft YaHei;}
+.nav a:hover,.wrap a:hover{color: #29cee9;}
 .nav{
 	display: inline-block;
 	text-align: center;
