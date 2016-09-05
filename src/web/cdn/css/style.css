@@ -28,7 +28,7 @@ a, ins { text-decoration: none; }
 
 :focus { outline: none; }
 
-article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary { display: block; }
+article, aside, details, figcaption, figure, footer, header,  main, nav, section, summary { display: block; }
 
 address, caption, cite, code, dfn, em, th, var, optgroup { font-style: normal; font-weight: normal; }
 
@@ -111,4 +111,17 @@ button:hover,.btn:hover{
 }
 .error{
 	color:red;
+}
+.content{
+	width: 800px;
+	display: inline-block;
+}
+.article{
+	text-align: left;border: 1px solid #eee;padding: 20px;margin: 20px;
+}
+.article h3 a{
+	font:16px/32px  "Microsoft YaHei";color:#333;
+}
+.article p{
+	font:14px/32px  "Microsoft YaHei";color:#333;
 }

@@ -6,13 +6,13 @@
 	<%- partial('./common/msg') %>
 <div class="content">
 	<%for(var i = 0;i < articles.length;i++ ){%>
-	<article class="article">
+	<div class="article">
 		<h3><a href="/articles/<%=articles[i]._id%>" title="<%=articles[i].title%>"><%=articles[i].title%></a></h3>
 		<p><%=articles[i].body%></p>
 		<div class="meta"><span class="muted"><%=articles[i].createdAt%></span>&nbsp; - &nbsp;<span>Author &nbsp;</span><a
 					href="/users/<%=articles[i].user._id%>"><%=articles[i].user.username%></a>
 		</div>
-	</article>
+	</div>
 	<%}%>
 </div>
 </div>
